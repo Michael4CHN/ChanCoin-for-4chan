@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChanCoin-for-4chan
 // @namespace    https://github.com/Michael4CHN/ChanCoin-for-4chan
-// @version      1.01
+// @version      1.02
 // @description  A ChanCoin tipping extension for 4chan.
 // @author       https://github.com/Michael4CHN
 // @run-at       document-start
@@ -32,7 +32,7 @@ function send4CHN(address, amount) {
         GM_xmlhttpRequest({
             method: "POST",
             url: "http://username:password@127.0.0.1:43814",
-            data: '{"method": "sendtoaddress", "params":["' + address + '",' + amount  + ',"A tip for post #' + postNum + '. Download the ChanCoin-for-4chan browser extension at https://github.com/Michael4CHN/ChanCoin-for-4chan"]}',
+            data: '{"method": "sendtoaddress", "params":["' + address + '",' + amount  + ',"A tip for post #' + postNum + '."]}',
             headers: {
                 "Content-Type": "application/json-rpc"
             },
