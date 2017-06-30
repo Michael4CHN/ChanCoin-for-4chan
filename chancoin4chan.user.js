@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChanCoin-for-4chan
 // @namespace    https://github.com/Michael4CHN/ChanCoin-for-4chan
-// @version      1
+// @version      1.01
 // @description  A ChanCoin tipping extension for 4chan.
 // @author       https://github.com/Michael4CHN
 // @run-at       document-start
@@ -22,13 +22,13 @@ function addButton() {
 function send4CHN(address, amount) {
     address = getPostAddress().replace(/\s+/g, '').replace(/\$4chn:/gi, '');
     amount = prompt("How much 4CHN would you like to send to " + address + "?", "0");
-    if(amount===null || amount==="" || /^\s+$/.test(amount)) {
+    if(amount==="" || /^\s+$/.test(amount)) {
         alert("ERROR! Please enter a number.");
     }
     else if(parseFloat(amount) < 0.00000001) {
         alert("ERROR! Value must be greater than or equal to 0.00000001.");
     }
-    else {
+    else if(amount!==null) {
         GM_xmlhttpRequest({
             method: "POST",
             url: "http://username:password@127.0.0.1:43814",
@@ -47,6 +47,7 @@ function send4CHN(address, amount) {
         });
     }
 }
+
 
 function getPostAddress() {
     postNum = document.getElementById("post-menu").children[0].children[0].getAttribute("data-id");
